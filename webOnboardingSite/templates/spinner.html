@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<style>
+    .spinner,.spinner:after{
+        width: 64px;
+        height: 64px;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        margin-top: -32px;
+        margin-left: -32px;
+        border-radius: 50%;
+        z-index: 2
+     }
+    .spinner {
+        background-color: transparent;
+        border-top: 10px solid rgb(66,139,202);
+        border-right: 10px solid rgb(66,139,202);
+        border-bottom: 10px solid rgb(66,139,202);
+        border-left: 10px solid rgba(66,139,202,.2);
+        transform: translateZ(0);
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+        animation-duration: 1.4s;
+        animation-name: spinner-loading
+     }
+    @keyframes spinner-loading{
+      0% {
+          transform: rotate(0deg)
+      } to {
+          transform: rotate(1turn)
+      }
+    }
+</style>
+<form class="form-inline" action="{{ url_for('final') }}"> 
+    <div class="row">
+        <label style="padding: 2% 9% 25% 36%; font-size:24px;">Estamos enviando tu solicitud</label>
+    </div>
+    <div class="row">
+    	<span class="spinner"></span>
+        <a href="{{ url_for('final') }}" style="coro: #E5E5E5; color:#FFFFFF;opacity: 0.5;">--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</a>
+    </div>
+    <div>
+        <a href="{{ url_for('final') }}" style="coro: #E5E5E5; color:#FFFFFF;opacity: 0.5;">------------------------------------------------------------------------------------------------</a>
+        <a href="{{ url_for('final') }}" style="coro: #E5E5E5; color:#FFFFFF;opacity: 0.3;">------------------------------------------------------------------------------------------------</a>
+        <a href="{{ url_for('final') }}" style="coro: #E5E5E5; color:#FFFFFF;opacity: 0.3;">----------------------------------------------------------------------------------------------------------------------------------</a>
+    </div>
+</form> 
+  {% endblock %}
